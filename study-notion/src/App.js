@@ -1,5 +1,5 @@
 import "./App.css";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // importing components
@@ -8,12 +8,13 @@ import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Navbar from "./components/Navbar.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
-    <Fragment>
+    <div className="w-screen h-full bg-richblack-900 flex flex-col">
       <Router>
         <Navbar
           isAuthenticated={isAuthenticated}
@@ -29,10 +30,17 @@ function App() {
             path="/signup"
             element={<Signup setIsAuthenticated={setIsAuthenticated} />}
           />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
-    </Fragment>
+    </div>
   );
 }
 
