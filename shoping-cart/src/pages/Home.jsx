@@ -34,13 +34,13 @@ const Home = () => {
       {loading ? (
         <Loader />
       ) : posts.length > 0 ? (
-        <div>
+        <div className="grid xs:grid-cols-1 lg:grid-cols-4 md:grid-cols-3 max-w-6xl p-2 mx-auto space-y-10 space-x-5 min-h-[80vh]">
           {posts.map((post) => {
             return <Product key={post.id} post={post} />;
           })}
         </div>
       ) : (
-        <div>
+        <div className="flex justify-center items-center h-[100vh] font-bold">
           <p>No Posts Found</p>
         </div>
       )}
