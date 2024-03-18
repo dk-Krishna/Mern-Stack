@@ -1,14 +1,24 @@
 import mongoose from "mongoose";
 
 const likesSchema = new mongoose.Schema({
-  user: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
   },
 
-  blog: {
+  blogId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "blog",
+  },
+
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+
+  updatedAt: {
+    type: Date,
+    default: Date.now(),
   },
 });
 

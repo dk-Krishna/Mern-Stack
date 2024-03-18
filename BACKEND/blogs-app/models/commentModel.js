@@ -5,17 +5,27 @@ const commentSchema = new mongoose.Schema({
     type: String,
   },
 
-  user: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'user',
+    ref: "user",
   },
 
-  blog: {
+  blogId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'blog',
-  }
+    ref: "blog",
+  },
+
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+
+  updatedAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
-const commentModel = mongoose.model('comment', commentSchema);
+const commentModel = mongoose.model("comment", commentSchema);
 
 export default commentModel;
